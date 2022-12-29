@@ -40,8 +40,8 @@
 <script>
 import Loading from './Loading'
 import { mapState } from 'vuex'
-import Hotjar from './service/Hotjar'
 import Amplitude from './service/Amplitude'
+import Hotjar from './service/Hotjar'
 import Crisp from './service/Crisp'
 import StopImpersonation from './pages/StopImpersonation'
 import Notifications from "./common/Notifications"
@@ -87,7 +87,7 @@ export default {
       confirmationCancel: null
     }
   }),
-  
+
   mounted () {
     this.$loading = this.$refs.loading
   },

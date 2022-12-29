@@ -1,0 +1,9 @@
+name: openform
+recipe: laravel
+config:
+  webroot: public
+  php: '8.1'
+  via: apache:2.4
+  cache: none
+  xdebug: false
+  database: postgres:9.6

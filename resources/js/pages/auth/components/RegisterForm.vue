@@ -7,10 +7,6 @@
       <!-- Email -->
       <text-input name="email" :form="form" :label="$t('email')" :required="true" placeholder="Your email address" />
 
-      <select-input name="hear_about_us" :options="hearAboutUsOptions" :form="form" placeholder="Select option"
-                    label="How did you hear about us?" :required="true"
-      />
-
       <!-- Password -->
       <text-input native-type="password" placeholder="Enter password"
                   name="password" :form="form" :label="$t('password')" :required="true"
@@ -31,13 +27,11 @@
       <v-button :loading="form.busy">Create an account</v-button>
 
       <p class="text-gray-500 mt-4">
-        Already have an account?  
+        Already have an account?
         <a href="#" v-if="isQuick" @click.prevent="$emit('openLogin')" class="font-semibold ml-1">Log In</a>
         <router-link v-else :to="{name:'login'}" class="font-semibold ml-1">Log In</router-link>
       </p>
 
-      <!-- GitHub Register Button -->
-      <login-with-github />
     </form>
   </div>
 </template>
@@ -68,7 +62,8 @@ export default {
       email: '',
       password: '',
       password_confirmation: '',
-      agree_terms: false
+      agree_terms: false,
+      hear_about_us: 'None'
     }),
     mustVerifyEmail: false
   }),
@@ -110,8 +105,8 @@ export default {
         await this.$store.dispatch('auth/updateUser', { user: data })
 
         // Track event
-        this.$logEvent('register', { source: this.form.hear_about_us })
-        
+        //this.$logEvent('register', { source: this.form.hear_about_us })
+
         initCrisp(data)
         this.$crisp.push(['set', 'session:event', [[['register', {}, 'blue']]]])
 
